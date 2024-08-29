@@ -3,13 +3,21 @@ from tkinter import PhotoImage
 from tkinter import messagebox
 
 def save_to_file():
-    content = title_entry.get()
-    if content:
-        with open("secret notes.txt", "w") as file:
-            file.write(content)
+    title = title_entry.get()
+    content = secret_text.get("1.0", 'end-1c')
+    if title and content :
+        with open("secret notes.txt", "a") as file:
+            file.write(title+ "\n" + content + "\n")
         messagebox.showinfo("Success", "Content saved to secret notes.txt")
     else:
         messagebox.showwarning("Warning", "Entry field is empty")
+
+def encrypt_secret():
+    print("Hello World")
+
+def save_and_encrypt():
+    save_to_file()
+    encrypt_secret()
 
 root = Tk()
 
@@ -36,8 +44,16 @@ title_entry = Entry(root)
 title_entry.pack()
 title_entry.place(x=160, y=250)
 
-save_button = Button(root, text="Save", command=save_to_file)
-save_button.pack()
-save_button.place(x=200, y=700)
+secret_text = Text(root, height=10, width=20)
+secret_text.pack()
+secret_text.place(x=160, y=300)
+
+encrypt_and_save_button = Button(root, text="Encrypt&Save", command=save_and_encrypt)
+encrypt_and_save_button.pack()
+encrypt_and_save_button.place(x=180, y=660)
+
+decrypt_button = Button(root, text="Decrypt")
+decrypt_button.pack()
+decrypt_button.place(x=200, y=700)
 
 root.mainloop()
