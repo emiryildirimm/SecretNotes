@@ -13,7 +13,7 @@ def save_to_file():
         messagebox.showwarning("Warning", "Entry field is empty")
 
 def encrypt_secret():
-    print("Hello World")
+    pass
 
 def save_and_encrypt():
     save_to_file()
@@ -44,9 +44,21 @@ title_entry = Entry(root)
 title_entry.pack()
 title_entry.place(x=160, y=250)
 
+secret_text_label = Label(root, text= "Give me a secret!")
+secret_text_label.pack()
+secret_text_label.place(x=180, y=300)
+
 secret_text = Text(root, height=10, width=20)
 secret_text.pack()
-secret_text.place(x=160, y=300)
+secret_text.place(x=160, y=330)
+
+secret_key = Label(root, text="Enter your high security secret key!")
+secret_key.pack()
+secret_key.place(x=130, y=530)
+
+secret_key_text = Entry(root)
+secret_key_text.pack()
+secret_key_text.place(x=160, y=570)
 
 encrypt_and_save_button = Button(root, text="Encrypt&Save", command=save_and_encrypt)
 encrypt_and_save_button.pack()
